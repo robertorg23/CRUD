@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <script src="https://kit.fontawesome.com/fe564642f3.js" crossorigin="anonymous"></script>
+    <title>Roberts SAUA</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="/">Registro Estudiantes
+          
+              </a>
+            </div>
+          </nav>
+    </header>
+    <main class="main-content">
+        <div class="crud-container">
+            <div class="crud-header">
+                <h1>Estudiantes Registrados</h1>
+                <button class="button is-success" id="openRegisterModal">
+                    <i class="fas fa-plus"></i>
+                    <span>Nuevo Estudiante</span>
+                </button>
+            </div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Matricula</th>
+                    <th>Plan de estudio</th>
+                    <th>Semestre</th>
+                    <th>Materia</th>
+                    <th>Correo Institucional</th>
+                    <th>Telefono</th>
+                    <th>Opciones</th>
+                  </tr>
+                </thead>
+                <tbody id="students-table">        
+                </tbody>
+              </table>
+        </div>
+    </main>
+    <div class="modal" id="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Registrar Nuevo Estudiante</p>
+            <button class="delete" aria-label="close" id="closeRegisterModal"></button>
+          </header>
+          <section class="modal-card-body">
+            <form id="register-form">
+                
+                <div class="field">
+                    <label class="label">Nombre</label>
+                    <div class="control">
+                      <input class="input" name="nombre" type="text" placeholder="Ingresa tu nombre">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Apellido</label>
+                    <div class="control">
+                      <input class="input" name="apell" type="text" placeholder="Ingresa tu apellido">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Matricula</label>
+                    <div class="control">
+                      <input class="input" name="matric" type="text" placeholder="Ingresa tu matricula">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Plan de Estudio</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="plan">
+                                <option value="">Selecciona tu plan de estudio</option>
+                                <option value="Ingeniero En Computacion">Ingeniero En Computacion</option>
+                                <option value="Ingeniero Civil">Ingeniero Civil</option>
+                                <option value="Ingeniero Constructor">Ingeniero Constructor</option>
+                                <option value="Topografia">Topografia</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label class="label">Semestre</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="semestre">
+                                <option value="">Selecciona tu semestre</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label">Materia</label>
+                  <div class="control">
+                    <input class="input" name="materia" type="text" placeholder="Ingresa tu materia">
+                  </div>
+                </div>
+
+                <!-- <div class="field">
+                    <label class="label">Materia</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="materia">
+                                <option value="">Selecciona la Materia</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> -->
+
+                  <div class="field">
+                    <label class="label">Telefono</label>
+                    <div class="control has-icons-left">
+                      <input class="input is-success" name="cel" type="tel" placeholder="+52 7472212343" >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-phone"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Correo Institucional</label>
+                    <div class="control has-icons-left">
+                      <input class="input is-success" name="email" type="email" placeholder="@uagro.mx" >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                    </div>
+                  </div>
+
+          </section>
+          <footer class="modal-card-foot">
+            <div class="buttons">
+              <button type="submit" class="button is-success">
+                <i class="fas fa-save"></i>
+                <span>Registrar</span>
+            </button>
+        </form>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <div class="modal" id="modal-update">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Actualizar Estudiante</p>
+            <button class="delete" aria-label="close" id="closeUpdateModal"></button>
+          </header>
+          <section class="modal-card-body">
+            <form id="update-form">
+                
+                <div class="field">
+                    <label class="label">Nombre</label>
+                    <div class="control">
+                      <input class="input" name="nombre" type="text" placeholder="Ingresa tu nombre">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Apellido</label>
+                    <div class="control">
+                      <input class="input" name="apell" type="text" placeholder="Ingresa tu apellido">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Matricula</label>
+                    <div class="control">
+                      <input class="input" name="matric" type="text" placeholder="Ingresa tu matricula">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Plan de Estudio</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="plan">
+                                <option value="">Selecciona tu plan de estudio</option>
+                                <option value="Ingeniero En Computacion">Ingeniero En Computacion</option>
+                                <option value="Ingeniero Civil">Ingeniero Civil</option>
+                                <option value="Ingeniero Constructor">Ingeniero Constructor</option>
+                                <option value="Topografia">Topografia</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label class="label">Semestre</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="semestre">
+                                <option value="">Selecciona tu semestre</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Materia</label>
+                  <div class="control">
+                    <input class="input" name="materia" type="text" placeholder="Ingresa tu materia">
+                  </div>
+                </div>
+                
+                <!-- <div class="field">
+                    <label class="label">Materia</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="materia">
+                                <option value="">Selecciona la Materia</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div> -->
+
+                  <div class="field">
+                    <label class="label">Telefono</label>
+                    <div class="control has-icons-left">
+                      <input class="input is-success" name="cel" type="tel" placeholder="+52 7472212343" >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-phone"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">Correo Institucional</label>
+                    <div class="control has-icons-left">
+                      <input class="input is-success" name="email" type="email" placeholder="@uagro.mx" >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                    </div>
+                  </div>
+
+          </section>
+          <footer class="modal-card-foot">
+            <div class="buttons">
+              <button type="submit" class="button is-success">
+                <i class="fas fa-save"></i>
+                <span>Actualizar</span>
+            </button>
+        </form>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+      <script src="js/app.js"></script>
+</body>
+</html>
